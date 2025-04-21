@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../components/Form.css";
 
 const Form = () => {
@@ -13,6 +14,8 @@ const Form = () => {
     about: "",
     cooking: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,8 +37,8 @@ const Form = () => {
       return;
     }
 
-    console.log("Form submitted successfully:", formData);
-    alert("Form submitted successfully!");
+    // Navigate to the new page with form data
+    navigate("/submitted-details", { state: formData });
   };
 
   return (
